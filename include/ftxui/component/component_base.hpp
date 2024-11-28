@@ -46,6 +46,16 @@ class ComponentBase {
   size_t ChildCount() const;
   int Index() const;
   void Add(Component children);
+
+  template <typename InputIt>
+  void Prepend(InputIt first, InputIt last) {
+    for (auto it = first; it != last; ++it) {
+      (*it)->Detach();
+      (*it)->parent_ = this;
+    }
+    children_.insert(children_.begin(), first, last);
+  }
+
   void Detach();
   void DetachAllChildren();
 
