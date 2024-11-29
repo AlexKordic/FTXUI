@@ -824,12 +824,24 @@ void ScreenInteractive::HandleTask(Component component, Task& task) {
   // clang-format on
 }
 
+struct DrawTimer {
+  PerfMeasure& m_;
+  explicit DrawTimer(PerfMeasure& m) : m_(m) {m_.start();}
+  ~DrawTimer() {m_.end();}
+
+  DrawTimer(const DrawTimer&) = delete;
+  DrawTimer(DrawTimer&&) = delete;
+  DrawTimer& operator=(const DrawTimer& other) = delete;
+  DrawTimer& operator=(const DrawTimer&& other) = delete;
+};
+
 // private
 // NOLINTNEXTLINE
 void ScreenInteractive::Draw(Component component) {
   if (frame_valid_) {
     return;
   }
+  DrawTimer timeit(render_duration_); // captures execution time of this method
   auto document = component->Render();
   int dimx = 0;
   int dimy = 0;

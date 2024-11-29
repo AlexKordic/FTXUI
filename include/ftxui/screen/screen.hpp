@@ -13,6 +13,13 @@
 
 namespace ftxui {
 
+struct PerfMeasure {
+  void start();
+  void end();
+  double measured; // last valid result
+  double _start, _end;
+};
+
 /// @brief Define how the Screen's dimensions should look like.
 /// @ingroup screen
 namespace Dimension {
@@ -67,7 +74,10 @@ class Screen : public Image {
   uint8_t RegisterHyperlink(const std::string& link);
   const std::string& Hyperlink(uint8_t id) const;
 
+  double LastFrameTime() const;
+
  protected:
+  PerfMeasure render_duration_;
   Cursor cursor_;
   std::vector<std::string> hyperlinks_ = {""};
 };

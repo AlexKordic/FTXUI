@@ -9,6 +9,8 @@
 #include <sstream>  // IWYU pragma: keep
 #include <utility>  // for pair
 
+#include <chrono>
+
 #include "ftxui/screen/image.hpp"  // for Image
 #include "ftxui/screen/pixel.hpp"  // for Pixel
 #include "ftxui/screen/screen.hpp"
@@ -543,5 +545,26 @@ const std::string& Screen::Hyperlink(std::uint8_t id) const {
   }
   return hyperlinks_[id];
 }
+
+double Screen::LastFrameTime() const {
+  return render_duration_.measured;
+}
+
+namespace {
+  // std::chrono::time_point 
+  auto program_start_time() {
+    static auto t = std::chrono::high_resolution_clock::now();
+    return t;
+  }
+}
+
+void PerfMeasure::start() {
+  _start = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - program_start_time()).count();
+}
+void PerfMeasure::end() {
+  _end = std::chrono::duration<double>(std::chrono::high_resolution_clock::now() - program_start_time()).count();
+  measured = _end - _start;
+}
+
 
 }  // namespace ftxui
