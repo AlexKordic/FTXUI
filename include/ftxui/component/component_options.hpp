@@ -6,6 +6,7 @@
 
 #include <chrono>                         // for milliseconds
 #include <ftxui/component/animation.hpp>  // for Duration, QuadraticInOut, Function
+#include <ftxui/component/screen_interactive.hpp>
 #include <ftxui/dom/direction.hpp>  // for Direction, Direction::Left, Direction::Right, Direction::Down
 #include <ftxui/dom/elements.hpp>  // for Element, separator
 #include <ftxui/util/ref.hpp>      // for Ref, ConstRef, StringRef
@@ -78,6 +79,65 @@ struct MenuEntryOption {
   ConstStringRef label = "MenuEntry";
   std::function<Element(const EntryState& state)> transform;
   AnimatedColorsOption animated_colors;
+};
+
+struct RedrawVariables {
+  int items_produced   = 0;
+  int items_total      = 0;
+  int component_height = 10;
+  int screen_height    = 50;
+
+  bool operator==(const RedrawVariables& other) const;
+};
+
+struct DSRenderContext {
+  int64_t id = 0;
+  bool    focused = false;
+  bool    hovered = false;
+  bool    component_focused = false;
+};
+
+struct DataSource;
+
+struct DSEventContext {
+  Event event;
+  Box component_box;
+  std::vector<Box>* children_dimensions = nullptr;
+  DataSource* source = nullptr;
+  bool focused = false;
+  bool mouse_ours = false;
+  bool handled = false; // true when default navigation actions are taken
+  int64_t starting_focused_id = 0; // position before default navigation actions
+};
+
+struct DataSource {
+  //
+  // Visible item context
+  RedrawVariables v;
+  RedrawVariables last_v;
+
+  int min_y                  = 1; // set to occupy more space in ComputeRequirement() phase during flex calculation
+  int64_t focused_id         = 0;
+  int64_t hovered_id         = -1;
+  int64_t estimated_start_id = 0; // set by Component::Render()
+  int64_t real_start_id      = 0; // set by DataSourceReflect
+  int64_t items_visible      = 0; // set by DataSourceReflect
+
+  // Tracking internal state chenges
+  bool should_redraw = false;
+  void set_screen_height(int height);
+  void set_component_height(int height);
+  void invoke_redraw();
+
+  DataSource();
+  // Interface to getting external data
+  std::function<int64_t()> item_count;
+  std::function<int64_t(int64_t)> count_items_before;
+  std::function<bool(int64_t&, int64_t)> move_id_by;
+  // Override keyboard shortcuts and advanced event handling
+  std::function<bool(DSEventContext)> on_event;
+  // Produce custom row (Element)  ///> Called to override default event handling.
+  std::function<Element(DSRenderContext&)> transform; // Produce Element representation of item referenced by id
 };
 
 /// @brief Option for the Menu component.

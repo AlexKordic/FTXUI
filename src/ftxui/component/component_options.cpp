@@ -3,6 +3,7 @@
 // the LICENSE file.
 #include "ftxui/component/component_options.hpp"
 
+#include <cstdint>
 #include <ftxui/screen/color.hpp>  // for Color, Color::White, Color::Black, Color::GrayDark, Color::Blue, Color::GrayLight, Color::Red
 #include <memory>                  // for shared_ptr
 #include <utility>                 // for move
@@ -66,6 +67,33 @@ void UnderlineOption::SetAnimationFunction(
     animation::easing::Function f_follower) {
   leader_function = std::move(f_leader);
   follower_function = std::move(f_follower);
+}
+
+bool RedrawVariables::operator==(const RedrawVariables& other) const {
+  return items_produced == other.items_produced && items_total == other.items_total && component_height == other.component_height && screen_height == other.screen_height;
+}
+
+void DataSource::set_screen_height(int height) {
+  if (height != v.screen_height) { should_redraw = true; }
+  v.screen_height = height;
+}
+void DataSource::set_component_height(int height) {
+  if (height != v.component_height) { should_redraw = true; }
+  v.component_height = height;
+}
+void DataSource::invoke_redraw() {
+  // protect against infinite redraws
+  if (v == last_v) { return; }
+  last_v = v;
+  ScreenInteractive::Active()->PostEvent(Event::Custom);
+}
+
+DataSource::DataSource() {
+  item_count = []()->int64_t { return 0; };
+  count_items_before = [](int64_t)->int64_t { return 0; };
+  move_id_by = [](int64_t&, int64_t)->bool { return false; };
+  on_event = [](DSEventContext)->bool { return false; };
+  transform = [](DSRenderContext&)->Element { return text("empty"); };
 }
 
 /// @brief Standard options for an horizontal menu.

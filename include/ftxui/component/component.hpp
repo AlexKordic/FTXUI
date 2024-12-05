@@ -67,6 +67,8 @@ Component Menu(ConstStringListRef entries,
 Component MenuEntry(MenuEntryOption options);
 Component MenuEntry(ConstStringRef label, MenuEntryOption options = {});
 
+Component DBMenu(DataSource* dataSource);
+
 Component Radiobox(RadioboxOption options);
 Component Radiobox(ConstStringListRef entries,
                    int* selected_,
