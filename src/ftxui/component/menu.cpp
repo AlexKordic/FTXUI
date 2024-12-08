@@ -283,15 +283,17 @@ class VerticalMenu : public ComponentBase {
     row_info.id = data_->estimated_start_id;
     row_info.component_focused = Focused();
     Elements elements;
-    while (elements.size() < data_->v.component_height) {
-      auto box_index = elements.size();
-      row_info.focused = (data_->focused_id == row_info.id);
-      row_info.hovered = (data_->hovered_id == row_info.id);
-      elements.push_back(data_->transform(row_info) |
-                         reflect(boxes_[box_index]));
-      // Increment loop variables
-      if (false == data_->move_id_by(row_info.id, 1)) {
-        break;
+    if(data_->v.items_total) {
+      while (elements.size() < data_->v.component_height) {
+        auto box_index = elements.size();
+        row_info.focused = (data_->focused_id == row_info.id);
+        row_info.hovered = (data_->hovered_id == row_info.id);
+        elements.push_back(data_->transform(row_info) |
+                          reflect(boxes_[box_index]));
+        // Increment loop variables
+        if (false == data_->move_id_by(row_info.id, 1)) {
+          break;
+        }
       }
     }
     data_->v.items_produced = elements.size();
