@@ -89,7 +89,7 @@ void DataSource::invoke_redraw() {
 }
 
 DataSource::DataSource() {
-  item_count = []()->int64_t { return 0; };
+  dataset_size = []()->DataSize { return {0, 0, 0}; };
   count_items_before = [](int64_t)->int64_t { return 0; };
   move_id_by = [](int64_t&, int64_t)->bool { return false; };
   on_event = [](DSEventContext)->bool { return false; };

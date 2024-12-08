@@ -110,6 +110,15 @@ struct DSEventContext {
   int64_t starting_focused_id = 0; // position before default navigation actions
 };
 
+struct DataSize {
+  // Total items available
+  int64_t total = 0;
+  // Value of first item
+  int64_t starting_id = 0;
+  // Value of last item
+  int64_t ending_id = 0;
+};
+
 struct DataSource {
   //
   // Visible item context
@@ -131,7 +140,7 @@ struct DataSource {
 
   DataSource();
   // Interface to getting external data
-  std::function<int64_t()> item_count;
+  std::function<DataSize()> dataset_size;
   std::function<int64_t(int64_t)> count_items_before;
   std::function<bool(int64_t&, int64_t)> move_id_by;
   // Override keyboard shortcuts and advanced event handling

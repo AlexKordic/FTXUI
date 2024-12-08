@@ -73,7 +73,7 @@ int main() {
   // Note: When mouse moves over DBMenu item the data_source.hovered_id points
   // to that item
 
-  data_source.item_count = [&items]() -> int64_t { return items.size(); };
+  data_source.dataset_size = [&items]() -> DataSize { return {int64_t(items.size()), 0, int64_t(items.size() - 1)}; };
   data_source.count_items_before = [&items](int64_t from_id) -> int64_t {
     // easy because our id's are indexes in items vector
     return from_id;

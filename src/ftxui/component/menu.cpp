@@ -276,7 +276,7 @@ class VerticalMenu : public ComponentBase {
 
   Element Render() override {
     boxes_.resize(data_->v.component_height);
-    data_->v.items_total = data_->item_count();
+    data_->v.items_total = data_->dataset_size().total;
     data_->estimated_start_id = find_start_id();
 
     DSRenderContext row_info;
@@ -385,10 +385,10 @@ class VerticalMenu : public ComponentBase {
       } else if (ctx.event == Event::PageDown) {
         data_->move_id_by(data_->focused_id, height);
       } else if (ctx.event == Event::Home) {
-        data_->focused_id = 0;
+        data_->focused_id = data_->dataset_size().starting_id;
         data_->move_id_by(data_->focused_id, 0);
       } else if (ctx.event == Event::End) {
-        data_->focused_id = data_->item_count() - 1;
+        data_->focused_id = data_->dataset_size().ending_id;
         data_->move_id_by(data_->focused_id, 0);
       }
     }
