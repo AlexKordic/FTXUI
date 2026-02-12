@@ -81,7 +81,7 @@ class VBox : public Node {
 /// });
 /// ```
 Element vbox(Elements children) {
-  return std::make_shared<VBox>(std::move(children));
+  return ftxui::make_shared<VBox>(std::move(children));
 }
 
 }  // namespace ftxui

@@ -109,7 +109,7 @@ class DBox : public Node {
 /// @return The right aligned element.
 /// @ingroup dom
 Element dbox(Elements children_) {
-  return std::make_shared<DBox>(std::move(children_));
+  return ftxui::make_shared<DBox>(std::move(children_));
 }
 
 }  // namespace ftxui

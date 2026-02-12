@@ -67,7 +67,7 @@ Element vscroll_indicator(Element child) {
       }
     }
   };
-  return std::make_shared<Impl>(std::move(child));
+  return ftxui::make_shared<Impl>(std::move(child));
 }
 
 /// @brief Display an horizontal scrollbar to the bottom.
@@ -123,7 +123,7 @@ Element hscroll_indicator(Element child) {
       }
     }
   };
-  return std::make_shared<Impl>(std::move(child));
+  return ftxui::make_shared<Impl>(std::move(child));
 }
 
 }  // namespace ftxui

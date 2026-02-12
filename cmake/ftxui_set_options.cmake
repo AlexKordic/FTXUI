@@ -101,6 +101,11 @@ function(ftxui_set_options library)
     target_compile_definitions(${library}
       PRIVATE "FTXUI_MICROSOFT_TERMINAL_FALLBACK")
   endif()
+
+  if (FTXUI_USE_LOCAL_SHARED_PTR)
+    target_compile_definitions(${library}
+      PUBLIC "FTXUI_USE_LOCAL_SHARED_PTR")
+  endif()
 endfunction()
 
 if (EMSCRIPTEN)

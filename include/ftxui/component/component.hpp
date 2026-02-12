@@ -5,7 +5,6 @@
 #define FTXUI_COMPONENT_HPP
 
 #include <functional>  // for function
-#include <memory>      // for make_shared, shared_ptr
 #include <utility>     // for forward
 
 #include "ftxui/component/component_base.hpp"  // for Component, Components
@@ -23,8 +22,8 @@ struct RadioboxOption;
 struct MenuEntryOption;
 
 template <class T, class... Args>
-std::shared_ptr<T> Make(Args&&... args) {
-  return std::make_shared<T>(std::forward<Args>(args)...);
+ftxui::shared_ptr<T> Make(Args&&... args) {
+  return ftxui::make_shared<T>(std::forward<Args>(args)...);
 }
 
 // Pipe operator to decorate components.

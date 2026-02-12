@@ -245,7 +245,7 @@ LinearGradient& LinearGradient::Stop(Color c) {
 /// color(LinearGradient{0, {Color::Red, Color::Blue}}, text("Hello"))
 /// ```
 Element color(const LinearGradient& gradient, Element child) {
-  return std::make_shared<LinearGradientColor>(std::move(child), gradient,
+  return ftxui::make_shared<LinearGradientColor>(std::move(child), gradient,
                                                /*background_color*/ false);
 }
 
@@ -261,7 +261,7 @@ Element color(const LinearGradient& gradient, Element child) {
 /// bgcolor(LinearGradient{0, {Color::Red, Color::Blue}}, text("Hello"))
 /// ```
 Element bgcolor(const LinearGradient& gradient, Element child) {
-  return std::make_shared<LinearGradientColor>(std::move(child), gradient,
+  return ftxui::make_shared<LinearGradientColor>(std::move(child), gradient,
                                                /*background_color*/ true);
 }
 

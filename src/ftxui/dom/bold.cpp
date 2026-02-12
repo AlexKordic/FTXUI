@@ -31,7 +31,7 @@ class Bold : public NodeDecorator {
 /// @brief Use a bold font, for elements with more emphasis.
 /// @ingroup dom
 Element bold(Element child) {
-  return std::make_shared<Bold>(std::move(child));
+  return ftxui::make_shared<Bold>(std::move(child));
 }
 
 }  // namespace ftxui

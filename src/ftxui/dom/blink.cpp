@@ -31,7 +31,7 @@ class Blink : public NodeDecorator {
 /// @brief The text drawn alternates in between visible and hidden.
 /// @ingroup dom
 Element blink(Element child) {
-  return std::make_shared<Blink>(std::move(child));
+  return ftxui::make_shared<Blink>(std::move(child));
 }
 
 }  // namespace ftxui

@@ -49,7 +49,7 @@ class Hyperlink : public NodeDecorator {
 ///   hyperlink("https://github.com/ArthurSonzogni/FTXUI", "link");
 /// ```
 Element hyperlink(std::string link, Element child) {
-  return std::make_shared<Hyperlink>(std::move(child), std::move(link));
+  return ftxui::make_shared<Hyperlink>(std::move(child), std::move(link));
 }
 
 /// @brief Decorate using an hyperlink.

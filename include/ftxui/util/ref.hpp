@@ -5,8 +5,8 @@
 #define FTXUI_UTIL_REF_HPP
 
 #include <ftxui/screen/string.hpp>
-#include <memory>
 #include <string>
+#include "ftxui/util/smart_ptr.hpp"  // for ftxui::shared_ptr, ftxui::make_shared
 #include <variant>
 #include <vector>
 
@@ -143,24 +143,24 @@ class ConstStringListRef {
 
   ConstStringListRef(std::vector<std::string> value)  // NOLINT
   {
-    variant_ = std::make_shared<Variant>(value);
+    variant_ = ftxui::make_shared<Variant>(value);
   }
   ConstStringListRef(const std::vector<std::string>* value)  // NOLINT
   {
-    variant_ = std::make_shared<Variant>(value);
+    variant_ = ftxui::make_shared<Variant>(value);
   }
   ConstStringListRef(const std::vector<std::wstring>* value)  // NOLINT
   {
-    variant_ = std::make_shared<Variant>(value);
+    variant_ = ftxui::make_shared<Variant>(value);
   }
   ConstStringListRef(Adapter* adapter)  // NOLINT
   {
-    variant_ = std::make_shared<Variant>(adapter);
+    variant_ = ftxui::make_shared<Variant>(adapter);
   }
   template <typename AdapterType>
   ConstStringListRef(std::unique_ptr<AdapterType> adapter)  // NOLINT
   {
-    variant_ = std::make_shared<Variant>(
+    variant_ = ftxui::make_shared<Variant>(
         static_cast<std::unique_ptr<Adapter>>(std::move(adapter)));
   }
 
@@ -208,7 +208,7 @@ class ConstStringListRef {
     }
   };
 
-  std::shared_ptr<Variant> variant_;
+  ftxui::shared_ptr<Variant> variant_;
 };
 
 }  // namespace ftxui

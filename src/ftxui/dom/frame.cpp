@@ -147,14 +147,14 @@ class FocusCursor : public Focus {
 /// @param child The element to be selected.
 /// @ingroup dom
 Element select(Element child) {
-  return std::make_shared<Select>(unpack(std::move(child)));
+  return ftxui::make_shared<Select>(unpack(std::move(child)));
 }
 
 /// @brief Set the `child` to be the one in focus globally.
 /// @param child The element to be focused.
 /// @ingroup dom
 Element focus(Element child) {
-  return std::make_shared<Focus>(unpack(std::move(child)));
+  return ftxui::make_shared<Focus>(unpack(std::move(child)));
 }
 
 /// @brief Allow an element to be displayed inside a 'virtual' area. It size can
@@ -164,7 +164,7 @@ Element focus(Element child) {
 /// @see xframe
 /// @see yframe
 Element frame(Element child) {
-  return std::make_shared<Frame>(unpack(std::move(child)), true, true);
+  return ftxui::make_shared<Frame>(unpack(std::move(child)), true, true);
 }
 
 /// @brief Same as `frame`, but only on the x-axis.
@@ -172,7 +172,7 @@ Element frame(Element child) {
 /// @see xframe
 /// @see yframe
 Element xframe(Element child) {
-  return std::make_shared<Frame>(unpack(std::move(child)), true, false);
+  return ftxui::make_shared<Frame>(unpack(std::move(child)), true, false);
 }
 
 /// @brief Same as `frame`, but only on the y-axis.
@@ -180,7 +180,7 @@ Element xframe(Element child) {
 /// @see xframe
 /// @see yframe
 Element yframe(Element child) {
-  return std::make_shared<Frame>(unpack(std::move(child)), false, true);
+  return ftxui::make_shared<Frame>(unpack(std::move(child)), false, true);
 }
 
 /// @brief Same as `focus`, but set the cursor shape to be a still block.
@@ -193,7 +193,7 @@ Element yframe(Element child) {
 /// @see focusCursorUnderlineBlinking
 /// @ingroup dom
 Element focusCursorBlock(Element child) {
-  return std::make_shared<FocusCursor>(unpack(std::move(child)),
+  return ftxui::make_shared<FocusCursor>(unpack(std::move(child)),
                                        Screen::Cursor::Block);
 }
 
@@ -207,7 +207,7 @@ Element focusCursorBlock(Element child) {
 /// @see focusCursorUnderlineBlinking
 /// @ingroup dom
 Element focusCursorBlockBlinking(Element child) {
-  return std::make_shared<FocusCursor>(unpack(std::move(child)),
+  return ftxui::make_shared<FocusCursor>(unpack(std::move(child)),
                                        Screen::Cursor::BlockBlinking);
 }
 
@@ -221,7 +221,7 @@ Element focusCursorBlockBlinking(Element child) {
 /// @see focusCursorUnderlineBlinking
 /// @ingroup dom
 Element focusCursorBar(Element child) {
-  return std::make_shared<FocusCursor>(unpack(std::move(child)),
+  return ftxui::make_shared<FocusCursor>(unpack(std::move(child)),
                                        Screen::Cursor::Bar);
 }
 
@@ -235,7 +235,7 @@ Element focusCursorBar(Element child) {
 /// @see focusCursorUnderlineBlinking
 /// @ingroup dom
 Element focusCursorBarBlinking(Element child) {
-  return std::make_shared<FocusCursor>(unpack(std::move(child)),
+  return ftxui::make_shared<FocusCursor>(unpack(std::move(child)),
                                        Screen::Cursor::BarBlinking);
 }
 
@@ -249,7 +249,7 @@ Element focusCursorBarBlinking(Element child) {
 /// @see focusCursorUnderlineBlinking
 /// @ingroup dom
 Element focusCursorUnderline(Element child) {
-  return std::make_shared<FocusCursor>(unpack(std::move(child)),
+  return ftxui::make_shared<FocusCursor>(unpack(std::move(child)),
                                        Screen::Cursor::Underline);
 }
 
@@ -263,7 +263,7 @@ Element focusCursorUnderline(Element child) {
 /// @see focusCursorUnderlineBlinking
 /// @ingroup dom
 Element focusCursorUnderlineBlinking(Element child) {
-  return std::make_shared<FocusCursor>(unpack(std::move(child)),
+  return ftxui::make_shared<FocusCursor>(unpack(std::move(child)),
                                        Screen::Cursor::UnderlineBlinking);
 }
 

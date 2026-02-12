@@ -31,7 +31,7 @@ class Underlined : public NodeDecorator {
 /// @brief Make the underlined element to be underlined.
 /// @ingroup dom
 Element underlined(Element child) {
-  return std::make_shared<Underlined>(std::move(child));
+  return ftxui::make_shared<Underlined>(std::move(child));
 }
 
 }  // namespace ftxui

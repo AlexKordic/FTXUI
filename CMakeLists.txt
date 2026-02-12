@@ -15,6 +15,7 @@ option(FTXUI_ENABLE_INSTALL "Generate the install target" ON)
 option(FTXUI_CLANG_TIDY "Execute clang-tidy" OFF)
 option(FTXUI_ENABLE_COVERAGE "Execute code coverage" OFF)
 option(FTXUI_DEV_WARNINGS "Enable more compiler warnings and warnings as errors" OFF)
+option(FTXUI_USE_LOCAL_SHARED_PTR "Use boost::local_shared_ptr instead of std::shared_ptr (no atomic ref-count)" OFF)
 
 set(FTXUI_MICROSOFT_TERMINAL_FALLBACK_HELP_TEXT "On windows, assume the \
 terminal used will be one of Microsoft and use a set of reasonnable fallback \
@@ -32,6 +33,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 include(cmake/ftxui_message.cmake)
 
 add_library(screen
+  include/ftxui/util/smart_ptr.hpp
   include/ftxui/screen/box.hpp
   include/ftxui/screen/color.hpp
   include/ftxui/screen/color_info.hpp
@@ -153,6 +155,17 @@ if (NOT EMSCRIPTEN)
   target_link_libraries(component
     PUBLIC Threads::Threads
   )
+endif()
+
+if (FTXUI_USE_LOCAL_SHARED_PTR)
+  if (TARGET Boost::smart_ptr)
+    # FetchContent modular Boost: link the specific smart_ptr target.
+    target_link_libraries(screen PUBLIC Boost::smart_ptr)
+  else()
+    # System-installed Boost: smart_ptr is header-only, use Boost::boost.
+    find_package(Boost REQUIRED)
+    target_link_libraries(screen PUBLIC Boost::boost)
+  endif()
 endif()
 
 include(cmake/ftxui_set_options.cmake)

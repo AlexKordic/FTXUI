@@ -219,7 +219,7 @@ class Flexbox : public Node {
 //  )
 /// ```
 Element flexbox(Elements children, FlexboxConfig config) {
-  return std::make_shared<Flexbox>(std::move(children), config);
+  return ftxui::make_shared<Flexbox>(std::move(children), config);
 }
 
 /// @brief A container displaying elements in rows from left to right. When

@@ -29,7 +29,7 @@ Element automerge(Element child) {
     }
   };
 
-  return std::make_shared<Impl>(std::move(child));
+  return ftxui::make_shared<Impl>(std::move(child));
 }
 
 }  // namespace ftxui

@@ -31,7 +31,7 @@ class Dim : public NodeDecorator {
 /// @brief Use a light font, for elements with less emphasis.
 /// @ingroup dom
 Element dim(Element child) {
-  return std::make_shared<Dim>(std::move(child));
+  return ftxui::make_shared<Dim>(std::move(child));
 }
 
 }  // namespace ftxui

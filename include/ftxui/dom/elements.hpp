@@ -19,7 +19,7 @@
 
 namespace ftxui {
 class Node;
-using Element = std::shared_ptr<Node>;
+using Element = ftxui::shared_ptr<Node>;
 using Elements = std::vector<Element>;
 using Decorator = std::function<Element(Element)>;
 using GraphFunction = std::function<std::vector<int>(int, int)>;

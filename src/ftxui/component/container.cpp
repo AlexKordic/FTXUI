@@ -336,7 +336,7 @@ Component Vertical(Components children) {
 /// });
 /// ```
 Component Vertical(Components children, int* selector) {
-  return std::make_shared<VerticalContainer>(std::move(children), selector);
+  return ftxui::make_shared<VerticalContainer>(std::move(children), selector);
 }
 
 /// @brief A list of components, drawn one by one horizontally and navigated
@@ -379,7 +379,7 @@ Component Horizontal(Components children) {
 /// }, selected_children);
 /// ```
 Component Horizontal(Components children, int* selector) {
-  return std::make_shared<HorizontalContainer>(std::move(children), selector);
+  return ftxui::make_shared<HorizontalContainer>(std::move(children), selector);
 }
 
 /// @brief A list of components, where only one is drawn and interacted with at
@@ -402,7 +402,7 @@ Component Horizontal(Components children, int* selector) {
 /// }, &tab_drawn);
 /// ```
 Component Tab(Components children, int* selector) {
-  return std::make_shared<TabContainer>(std::move(children), selector);
+  return ftxui::make_shared<TabContainer>(std::move(children), selector);
 }
 
 /// @brief A list of components to be stacked on top of each other.
@@ -429,7 +429,7 @@ Component Tab(Components children, int* selector) {
 /// });
 /// ```
 Component Stacked(Components children) {
-  return std::make_shared<StackedContainer>(std::move(children));
+  return ftxui::make_shared<StackedContainer>(std::move(children));
 }
 
 }  // namespace Container
