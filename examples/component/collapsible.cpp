@@ -26,7 +26,7 @@ Component Inner(std::vector<Component> children) {
 }
 
 Component Empty() {
-  return std::make_shared<ComponentBase>();
+  return ftxui::make_shared<ComponentBase>();
 }
 
 int main() {

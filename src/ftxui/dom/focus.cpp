@@ -51,7 +51,7 @@ Decorator focusPositionRelative(float x, float y) {
   };
 
   return [x, y](Element child) {
-    return std::make_shared<Impl>(std::move(child), x, y);
+    return ftxui::make_shared<Impl>(std::move(child), x, y);
   };
 }
 
@@ -90,7 +90,7 @@ Decorator focusPosition(int x, int y) {
   };
 
   return [x, y](Element child) {
-    return std::make_shared<Impl>(std::move(child), x, y);
+    return ftxui::make_shared<Impl>(std::move(child), x, y);
   };
 }
 

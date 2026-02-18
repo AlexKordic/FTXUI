@@ -11,7 +11,7 @@ namespace ftxui {
 
 namespace {
 Component Make() {
-  return std::make_shared<ComponentBase>();
+  return ftxui::make_shared<ComponentBase>();
 }
 }  // namespace
 

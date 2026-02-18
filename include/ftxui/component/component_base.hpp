@@ -4,11 +4,11 @@
 #ifndef FTXUI_COMPONENT_BASE_HPP
 #define FTXUI_COMPONENT_BASE_HPP
 
-#include <memory>  // for unique_ptr
 #include <vector>  // for vector
 
 #include "ftxui/component/captured_mouse.hpp"  // for CaptureMouse
 #include "ftxui/dom/elements.hpp"              // for Element
+#include "ftxui/util/smart_ptr.hpp"            // for ftxui::shared_ptr
 
 namespace ftxui {
 
@@ -21,7 +21,7 @@ class Params;
 }  // namespace animation
 
 class ComponentBase;
-using Component = std::shared_ptr<ComponentBase>;
+using Component = ftxui::shared_ptr<ComponentBase>;
 using Components = std::vector<Component>;
 
 /// @brief It implement rendering itself as ftxui::Element. It implement

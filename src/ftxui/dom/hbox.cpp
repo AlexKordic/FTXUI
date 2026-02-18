@@ -81,7 +81,7 @@ class HBox : public Node {
 /// });
 /// ```
 Element hbox(Elements children) {
-  return std::make_shared<HBox>(std::move(children));
+  return ftxui::make_shared<HBox>(std::move(children));
 }
 
 }  // namespace ftxui

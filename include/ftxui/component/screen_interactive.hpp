@@ -7,12 +7,12 @@
 #include <atomic>                        // for atomic
 #include <ftxui/component/receiver.hpp>  // for Receiver, Sender
 #include <functional>                    // for function
-#include <memory>                        // for shared_ptr
 #include <string>                        // for string
 #include <thread>                        // for thread
 #include <variant>                       // for variant
 
 #include "ftxui/component/animation.hpp"       // for TimePoint
+#include "ftxui/util/smart_ptr.hpp"            // for ftxui::shared_ptr
 #include "ftxui/component/captured_mouse.hpp"  // for CapturedMouse
 #include "ftxui/component/event.hpp"           // for Event
 #include "ftxui/component/task.hpp"            // for Task, Closure
@@ -23,7 +23,7 @@ class ComponentBase;
 class Loop;
 struct Event;
 
-using Component = std::shared_ptr<ComponentBase>;
+using Component = ftxui::shared_ptr<ComponentBase>;
 class ScreenInteractivePrivate;
 
 class ScreenInteractive : public Screen {

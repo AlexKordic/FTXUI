@@ -79,7 +79,7 @@ class FgColor : public NodeDecorator {
 /// Element document = color(Color::Green, text("Success")),
 /// ```
 Element color(Color color, Element child) {
-  return std::make_shared<FgColor>(std::move(child), color);
+  return ftxui::make_shared<FgColor>(std::move(child), color);
 }
 
 /// @brief Set the background color of an element.
@@ -94,7 +94,7 @@ Element color(Color color, Element child) {
 /// Element document = bgcolor(Color::Green, text("Success")),
 /// ```
 Element bgcolor(Color color, Element child) {
-  return std::make_shared<BgColor>(std::move(child), color);
+  return ftxui::make_shared<BgColor>(std::move(child), color);
 }
 
 /// @brief Decorate using a foreground color.

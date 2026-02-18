@@ -167,7 +167,7 @@ class Gauge : public Node {
 //  @param direction Direction of progress bars progression.
 /// @ingroup dom
 Element gaugeDirection(float progress, Direction direction) {
-  return std::make_shared<Gauge>(progress, direction);
+  return ftxui::make_shared<Gauge>(progress, direction);
 }
 
 /// @brief Draw a high definition progress bar progressing from left to right.

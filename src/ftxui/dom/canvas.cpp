@@ -898,7 +898,7 @@ Element canvas(ConstRef<Canvas> canvas) {
     const Canvas& canvas() final { return *canvas_; }
     ConstRef<Canvas> canvas_;
   };
-  return std::make_shared<Impl>(canvas);
+  return ftxui::make_shared<Impl>(canvas);
 }
 
 /// @brief Produce an element drawing a canvas of requested size.
@@ -930,7 +930,7 @@ Element canvas(int width, int height, std::function<void(Canvas&)> fn) {
     int height_;
     std::function<void(Canvas&)> fn_;
   };
-  return std::make_shared<Impl>(width, height, std::move(fn));
+  return ftxui::make_shared<Impl>(width, height, std::move(fn));
 }
 
 /// @brief Produce an element drawing a canvas.

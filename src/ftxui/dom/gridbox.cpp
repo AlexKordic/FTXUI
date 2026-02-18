@@ -181,7 +181,7 @@ class GridBox : public Node {
 /// ╰──────────╯╰──────╯╰──────────╯
 /// ```
 Element gridbox(std::vector<Elements> lines) {
-  return std::make_shared<GridBox>(std::move(lines));
+  return ftxui::make_shared<GridBox>(std::move(lines));
 }
 
 }  // namespace ftxui

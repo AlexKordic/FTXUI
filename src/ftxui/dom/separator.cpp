@@ -132,7 +132,7 @@ class SeparatorWithPixel : public SeparatorAuto {
 /// down
 /// ```
 Element separator() {
-  return std::make_shared<SeparatorAuto>(LIGHT);
+  return ftxui::make_shared<SeparatorAuto>(LIGHT);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -170,7 +170,7 @@ Element separator() {
 /// down
 /// ```
 Element separatorStyled(BorderStyle style) {
-  return std::make_shared<SeparatorAuto>(style);
+  return ftxui::make_shared<SeparatorAuto>(style);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -207,7 +207,7 @@ Element separatorStyled(BorderStyle style) {
 /// down
 /// ```
 Element separatorLight() {
-  return std::make_shared<SeparatorAuto>(LIGHT);
+  return ftxui::make_shared<SeparatorAuto>(LIGHT);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -244,7 +244,7 @@ Element separatorLight() {
 /// down
 /// ```
 Element separatorDashed() {
-  return std::make_shared<SeparatorAuto>(DASHED);
+  return ftxui::make_shared<SeparatorAuto>(DASHED);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -281,7 +281,7 @@ Element separatorDashed() {
 /// down
 /// ```
 Element separatorHeavy() {
-  return std::make_shared<SeparatorAuto>(HEAVY);
+  return ftxui::make_shared<SeparatorAuto>(HEAVY);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -318,7 +318,7 @@ Element separatorHeavy() {
 /// down
 /// ```
 Element separatorDouble() {
-  return std::make_shared<SeparatorAuto>(DOUBLE);
+  return ftxui::make_shared<SeparatorAuto>(DOUBLE);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -355,7 +355,7 @@ Element separatorDouble() {
 /// down
 /// ```
 Element separatorEmpty() {
-  return std::make_shared<SeparatorAuto>(EMPTY);
+  return ftxui::make_shared<SeparatorAuto>(EMPTY);
 }
 
 /// @brief Draw a vertical or horizontal separation in between two other
@@ -393,7 +393,7 @@ Element separatorEmpty() {
 /// down
 /// ```
 Element separatorCharacter(std::string value) {
-  return std::make_shared<Separator>(std::move(value));
+  return ftxui::make_shared<Separator>(std::move(value));
 }
 
 /// @brief Draw a separator in between two element filled with a given pixel.
@@ -424,7 +424,7 @@ Element separatorCharacter(std::string value) {
 /// Down
 /// ```
 Element separator(Pixel pixel) {
-  return std::make_shared<SeparatorWithPixel>(std::move(pixel));
+  return ftxui::make_shared<SeparatorWithPixel>(std::move(pixel));
 }
 
 /// @brief Draw an horizontal bar, with the area in between left/right colored
@@ -494,7 +494,7 @@ Element separatorHSelector(float left,
     Color unselected_color_;
     Color selected_color_;
   };
-  return std::make_shared<Impl>(left, right, unselected_color, selected_color);
+  return ftxui::make_shared<Impl>(left, right, unselected_color, selected_color);
 }
 
 /// @brief Draw an vertical bar, with the area in between up/downcolored
@@ -564,7 +564,7 @@ Element separatorVSelector(float up,
     Color unselected_color_;
     Color selected_color_;
   };
-  return std::make_shared<Impl>(up, down, unselected_color, selected_color);
+  return ftxui::make_shared<Impl>(up, down, unselected_color, selected_color);
 }
 
 }  // namespace ftxui

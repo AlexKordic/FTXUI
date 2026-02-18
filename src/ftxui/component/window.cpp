@@ -102,7 +102,7 @@ Element DefaultRenderState(const WindowRenderState& state) {
 
   const Color color = Color::Red;
 
-  element = std::make_shared<ResizeDecorator>(  //
+  element = ftxui::make_shared<ResizeDecorator>(  //
       element,                                  //
       state.hover_left,                         //
       state.hover_right,                        //

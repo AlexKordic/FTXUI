@@ -42,7 +42,7 @@ class Reflect : public Node {
 
 Decorator reflect(Box& box) {
   return [&](Element child) -> Element {
-    return std::make_shared<Reflect>(std::move(child), box);
+    return ftxui::make_shared<Reflect>(std::move(child), box);
   };
 }
 

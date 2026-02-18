@@ -49,6 +49,7 @@ void Loop::RunOnceBlocking() {
 /// Execute the loop, blocking the current thread, up until the loop has
 /// quitted.
 void Loop::Run() {
+  // component_->OnEvent(Event::Special("startup"));
   while (!HasQuitted()) {
     RunOnceBlocking();
   }

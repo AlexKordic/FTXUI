@@ -98,7 +98,7 @@ class VText : public Node {
 /// Hello world!
 /// ```
 Element text(std::string text) {
-  return std::make_shared<Text>(std::move(text));
+  return ftxui::make_shared<Text>(std::move(text));
 }
 
 /// @brief Display a piece of unicode text.
@@ -117,7 +117,7 @@ Element text(std::string text) {
 /// Hello world!
 /// ```
 Element text(std::wstring text) {  // NOLINT
-  return std::make_shared<Text>(to_string(text));
+  return ftxui::make_shared<Text>(to_string(text));
 }
 
 /// @brief Display a piece of unicode text vertically.
@@ -147,7 +147,7 @@ Element text(std::wstring text) {  // NOLINT
 /// !
 /// ```
 Element vtext(std::string text) {
-  return std::make_shared<VText>(std::move(text));
+  return ftxui::make_shared<VText>(std::move(text));
 }
 
 /// @brief Display a piece unicode text vertically.
@@ -177,7 +177,7 @@ Element vtext(std::string text) {
 /// !
 /// ```
 Element vtext(std::wstring text) {  // NOLINT
-  return std::make_shared<VText>(to_string(text));
+  return ftxui::make_shared<VText>(to_string(text));
 }
 
 }  // namespace ftxui

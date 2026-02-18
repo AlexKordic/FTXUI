@@ -161,7 +161,7 @@ Element filelistScrollIndicator(DataSource* context,
                                 ValidCountCallback valid_count_callback,
                                 CountItemsBefore count_items_before) {
   //
-  return std::make_shared<DataSourceScrollIndicator>(
+  return ftxui::make_shared<DataSourceScrollIndicator>(
       std::move(child), context, std::move(valid_count_callback),
       std::move(count_items_before));
 }
@@ -226,7 +226,7 @@ class DataSourceReflect : public Node {
 
 Decorator datasource_reflect(DataSource* context, Box* b) {
   return [context, b](Element child) -> Element {
-    return std::make_shared<DataSourceReflect>(std::move(child), context, b);
+    return ftxui::make_shared<DataSourceReflect>(std::move(child), context, b);
   };
 }
 

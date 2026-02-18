@@ -32,7 +32,7 @@ class Inverted : public NodeDecorator {
 /// colors.
 /// @ingroup dom
 Element inverted(Element child) {
-  return std::make_shared<Inverted>(std::move(child));
+  return ftxui::make_shared<Inverted>(std::move(child));
 }
 
 }  // namespace ftxui

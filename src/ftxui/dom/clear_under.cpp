@@ -36,7 +36,7 @@ class ClearUnder : public NodeDecorator {
 /// @see ftxui::dbox
 /// @ingroup dom
 Element clear_under(Element element) {
-  return std::make_shared<ClearUnder>(std::move(element));
+  return ftxui::make_shared<ClearUnder>(std::move(element));
 }
 
 }  // namespace ftxui

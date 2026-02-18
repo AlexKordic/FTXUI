@@ -88,7 +88,7 @@ class Size : public Node {
 /// @ingroup dom
 Decorator size(WidthOrHeight direction, Constraint constraint, int value) {
   return [=](Element e) {
-    return std::make_shared<Size>(std::move(e), direction, constraint, value);
+    return ftxui::make_shared<Size>(std::move(e), direction, constraint, value);
   };
 }
 

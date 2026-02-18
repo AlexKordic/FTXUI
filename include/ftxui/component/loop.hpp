@@ -4,14 +4,13 @@
 #ifndef FTXUI_COMPONENT_LOOP_HPP
 #define FTXUI_COMPONENT_LOOP_HPP
 
-#include <memory>  // for shared_ptr
-
 #include "ftxui/component/component_base.hpp"  // for ComponentBase
+#include "ftxui/util/smart_ptr.hpp"            // for ftxui::shared_ptr
 
 namespace ftxui {
 class ComponentBase;
 
-using Component = std::shared_ptr<ComponentBase>;
+using Component = ftxui::shared_ptr<ComponentBase>;
 class ScreenInteractive;
 
 class Loop {
